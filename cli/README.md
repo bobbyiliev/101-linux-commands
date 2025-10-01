@@ -25,34 +25,56 @@ python -m cli.cli --help
 ## Commands
 
 ### Hello Command
+
 ```bash
 linux-cli hello greet
 linux-cli hello greet "Linux User"
+linux-cli hello greet --verbose
+```
+
+### List Command
+
+```bash
+linux-cli list
+linux-cli list --limit 5
+linux-cli list --verbose
+```
+
+### Global Verbose Flag
+
+```bash
+linux-cli --verbose hello greet
+linux-cli --verbose list --limit 5
 ```
 
 ## Development
 
 ### Running Tests
+
 ```bash
 pytest
 ```
 
 ### Code Formatting
+
 ```bash
 black cli/
 ```
 
 ### Import Sorting
+
 ```bash
 isort cli/
 ```
 
 ### Linting
+
 ```bash
 flake8 cli/
 ```
 
 ### Type Checking
+
 ```bash
 mypy cli/
 ```
@@ -60,8 +82,9 @@ mypy cli/
 ## GitHub Actions
 
 The CLI has its own workflow that runs:
+
 - Code formatting checks (Black)
-- Import sorting checks (isort) 
+- Import sorting checks (isort)
 - Linting (Flake8)
 - Type checking (MyPy)
 - Tests (pytest)
