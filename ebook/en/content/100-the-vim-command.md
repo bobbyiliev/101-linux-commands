@@ -10,7 +10,7 @@ Vim text editor is developed by [Bram Moolenaar](https://en.wikipedia.org/wiki/B
 
 The most searched question about vim editor looks very funny but it's true that the new user gets stuck at the very beginning when using vim editor.
 
-The command to save the file and exit vim editor: ```:wq```
+The command to save the file and exit vim editor: ```:wq``` or ```:x```
 
 The command to exit vim editor without saving the file: ```:q!```
 
@@ -30,6 +30,12 @@ On Ubuntu/Debian:
 sudo apt-get install vim
 ```
 
+On Arch:
+
+```
+sudo pacman -S vim
+```
+
 On CentOS/Fedora:
 
 ```
@@ -39,6 +45,12 @@ If you want to use advanced features on CentOS/Fedora, you'll need to install en
 
 ```
 sudo yum install -y vim-enhanced
+```
+
+On macOS:
+
+```
+brew install vim
 ```
 
 ### Syntax:
@@ -86,10 +98,11 @@ Some common commands:
 - `w` : move forward one word
 - `b` : move backward one word
 - `e` : Move to the end of your word
-- `o` : move to begining of line
+- `0` : move to begining of line
 - `$` : move to end of line
 - `gg` : go to begining of file
 - `G` : go to end of file
+- `:linenumber` : go to a specific line number
 
 ### Copy, Paste and Delete
 1. Copy(Yank):
@@ -116,6 +129,10 @@ Copying in vim is called "yanking":
 - `d^` : delete from cursor to begining of line
 - `dG` : delete from cursor to end of file
 - `dgg`:  delete from cursor to begining of file
+- `dw` : delete from cursor to end of word
+- `di"` : delete inside double quotes
+- `diw` : delete inner word (without spaces)
+- `dip` : delete inner paragraph (no newline)
 
 ### Selection (visual mode)
 
