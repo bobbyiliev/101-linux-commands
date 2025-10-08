@@ -42,6 +42,29 @@ Here are some examples of how to use the CLI:
     linux-cli show ls
     ```
 
+*   **Count lines/words/bytes (wc-like):**
+
+    ```bash
+    # Count a single file
+    linux-cli count file.txt
+
+    # Count multiple files and show total
+    linux-cli count --total file1.txt file2.txt
+
+    # Read from stdin
+    cat file.txt | linux-cli count
+    ```
+
+*   **Locate an executable (which-like):**
+
+    ```bash
+    # Show first match in PATH
+    linux-cli which python3
+
+    # Show all matches in PATH
+    linux-cli which --all python3
+    ```
+
 ## Development
 
 ### Running Tests
