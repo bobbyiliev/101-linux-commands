@@ -922,7 +922,7 @@ Feel free to add new topics in case that you don't find one that you like from t
 - [158-the-tty-command.md](ebook/en/content/158-the-tty-command.md)
 - [159-the-lspci-command.md](ebook/en/content/159-the-lspci-command.md)
 - [160-the-cfdisk-command.md](ebook/en/content/160-the-cfdisk-command.md)
-
+- [161-the-nmtui-command.md](ebook/en/content/161-the-nmtui-command.md)
 # 🔗Links
 
 - [Free $200 Credit For DigitalOcean](https://m.do.co/c/2a9bba940f39)
