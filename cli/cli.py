@@ -26,20 +26,33 @@ class CustomTyper(TyperGroup):
                 raise click.exceptions.UsageError(new_message, ctx=ctx) from e
 
             raise
+ 
+@app.callback()
+def main(
+    ctx: typer.Context,
+    verbose: bool = typer.Option(
+        False,
+        "--verbose",
+        "-v",
+        is_flag=True,
+        help="Enable verbose debug output for all commands.",
+    ),
+) -> None:
+    """Configure application-wide options before subcommands run."""
 
+    set_verbose(ctx, verbose)
+    if verbose:
+        typer.echo("[verbose] Verbose mode enabled", err=True)
 
-app = typer.Typer(help="101 Linux Commands CLI 🚀", cls=CustomTyper)
+# Register subcommands
 app.add_typer(hello.app, name="hello")
-app.add_typer(list.app, name="list")
+app.add_typer(listing.app, name="list")
 app.add_typer(version.app, name="version")
 app.command()(show.show)
-app.add_typer(search.app, name="search")
-
 
 def main() -> None:
     """CLI entry point."""
     app()
-
 
 if __name__ == "__main__":
     main()
