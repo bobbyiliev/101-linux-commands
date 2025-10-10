@@ -89,6 +89,7 @@ In this interactive tutorial, you will learn the different ways to use the `ls` 
 |<center>-</center>|`--color=auto`|Colorize output to distinguish file types|
 |`-g`|<center>-</center>|Like `-l` but without showing owner|
 |`-o`|<center>-</center>|Like `-l` but without showing group|
+|`-C`|<center>-</center>|List entries by columns|
 |<center>-</center>|`--group-directories-first`|List directories before files|
 
 
