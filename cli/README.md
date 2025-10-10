@@ -7,14 +7,18 @@ Interactive CLI tool companion for the 101 Linux Commands eBook.
 To get started, install the dependencies and run the CLI:
 
 ```bash
-pip install -r requirements.txt
-python -m cli.cli --help
+uv sync --frozen
+
+# for Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+# OR for macOS/Linux
+source .venv/bin/activate
+
+python -m linux_commands_cli.cli --help
 ```
 
-You can also install the CLI as an editable package:
-
+The CLI will be installed as an editable package.
 ```bash
-pip install -e .
 linux-cli --help
 ```
 

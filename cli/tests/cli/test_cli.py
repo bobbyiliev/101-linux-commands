@@ -3,14 +3,20 @@
 
 import os
 import re
-import subprocess
 import sys
+import subprocess
+from pathlib import Path
+
+
+ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+EMOJI = re.compile("[\U0001f300-\U0001faff]", flags=re.UNICODE)
+CLI_APP_PATH = Path(__file__).absolute().parents[2] / "linux_commands_cli" / "cli.py"
 
 
 def run_cli(args):
     """Helper to run CLI with subprocess and capture output."""
     result = subprocess.run(
-        [sys.executable, "cli.py", *args],
+        [sys.executable, CLI_APP_PATH, *args],
         capture_output=True,
         text=True,
         cwd=os.path.dirname(__file__),
@@ -71,10 +77,6 @@ def test_version_show_command():
     assert "101-linux v0.1.0" in result.stdout
 
 
-ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
-EMOJI = re.compile("[\U0001f300-\U0001faff]", flags=re.UNICODE)
-
-
 def clean_output(text: str) -> str:
     """Remove ANSI colors and emojis."""
     text = ANSI_ESCAPE.sub("", text)
@@ -123,7 +125,7 @@ def test_show_invalid():
 def test_search_match():
     """It should find matches and exit 0."""
     result = subprocess.run(
-        [sys.executable, "cli.py", "search", "grep"],
+        [sys.executable, CLI_APP_PATH, "search", "grep"],
         capture_output=True,
         text=True,
         cwd=os.path.dirname(__file__),
@@ -136,7 +138,7 @@ def test_search_match():
 def test_search_no_match():
     """It should print 'No commands found.' and exit non-zero."""
     result = subprocess.run(
-        [sys.executable, "cli.py", "search", "this-should-not-exist-xyz"],
+        [sys.executable, CLI_APP_PATH, "search", "this-should-not-exist-xyz"],
         capture_output=True,
         text=True,
         cwd=os.path.dirname(__file__),

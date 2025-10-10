@@ -1,6 +1,6 @@
+import typer
 from typing import Dict, List
 
-import typer
 
 app = typer.Typer(
     help=("Search available commands by keyword " "(name or description).")

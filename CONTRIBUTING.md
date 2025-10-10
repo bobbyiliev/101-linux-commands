@@ -109,18 +109,13 @@ cd cli
 1. (Recommended) Create and activate a virtual environment. Use the command that matches your shell:
 
 ```bash
-python -m venv .venv
-# Windows PowerShell
+cd cli
+uv sync --frozen --group dev
+
+# for Windows PowerShell
 .\.venv\Scripts\Activate.ps1
-# macOS/Linux
+# OR for macOS/Linux
 source .venv/bin/activate
-```
-
-1. Install the dependencies and the CLI in editable mode.
-
-```bash
-pip install -r requirements.txt
-pip install -e .
 ```
 
 1. Confirm the CLI works.
@@ -128,7 +123,7 @@ pip install -e .
 ```bash
 linux-cli --help
 # or run directly without installation
-python -m cli.cli hello greet --name "Linux Contributor"
+python -m linux_commands_cli.cli hello greet --name "Linux Contributor"
 # greet someone specific using the installed entry point
 linux-cli hello greet --name "Linux Contributor"
 ```
@@ -139,6 +134,7 @@ linux-cli hello greet --name "Linux Contributor"
 
 ```python
 import typer
+
 
 app = typer.Typer(help="Ping command group")
 
@@ -152,19 +148,19 @@ def once():
 1. Register the command with the main Typer app in `cli/cli.py`:
 
 ```python
-from commands import hello, ping
+from linux_commands_cli.commands import hello, ping
 
 app = typer.Typer(help="101 Linux Commands CLI 🚀")
 app.add_typer(hello.app, name="hello")
 app.add_typer(ping.app, name="ping")
 ```
 
-1. Add or update tests in `cli/test_cli.py` to cover your new command. Mirror the existing `hello` command tests and update expectations.
+1. Add or update tests in `tests/cli/test_cli.py` to cover your new command. Mirror the existing `hello` command tests and update expectations.
 
 1. Run the CLI manually to verify your command behaves as expected.
 
 ```bash
-python -m cli.cli ping once
+python -m linux_commands_cli.cli ping once
 ```
 
 ### Running tests
