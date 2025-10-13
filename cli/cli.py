@@ -8,7 +8,7 @@ import click
 import typer
 from typer.main import TyperGroup
 
-from commands import hello, list, search, show, version
+from commands import hello, list, search, show, version, count, which
 
 
 class CustomTyper(TyperGroup):
@@ -34,6 +34,14 @@ app.add_typer(list.app, name="list")
 app.add_typer(version.app, name="version")
 app.command()(show.show)
 app.add_typer(search.app, name="search")
+app.add_typer(count.app, name="count")
+app.add_typer(which.app, name="which")
+for k, v in app._commands.items():
+    try:
+        tname = type(v).__name__
+    except Exception:
+        tname = str(type(v))
+    print(f"DEBUG_cli_registered: {k} -> {tname}")
 
 
 def main() -> None:
