@@ -285,7 +285,300 @@
             color: white;
             border-color: var(--primary-color);
         }
+/* Search Container Styles - Improved */
+.search-container {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 1rem;
+}
 
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid var(--code-border);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.search-wrapper:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(91, 124, 153, 0.1);
+}
+
+.search-icon {
+    color: var(--reading-text-muted);
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    pointer-events: none;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--reading-text);
+    background: transparent;
+    padding: 0.25rem 0;
+}
+
+.search-input::placeholder {
+    color: var(--reading-text-muted);
+    opacity: 0.6;
+}
+
+.search-clear {
+    background: none;
+    border: none;
+    color: var(--reading-text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.search-clear.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.search-clear:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--reading-text);
+}
+
+/* Search Navigation Controls */
+.search-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(91, 124, 153, 0.05);
+    border-radius: 6px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-results-info {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--reading-text);
+}
+
+#currentMatchNumber {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.search-separator {
+    color: var(--reading-text-muted);
+    margin: 0 0.25rem;
+}
+
+#totalMatches {
+    color: var(--reading-text-muted);
+}
+
+.search-nav-buttons {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.search-nav-btn {
+    background: white;
+    border: 1px solid var(--code-border);
+    color: var(--reading-text);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 0.75rem;
+}
+
+.search-nav-btn:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.search-nav-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.search-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.search-nav-btn i {
+    font-size: 0.7rem;
+}
+
+/* Search Highlight Styles - Improved */
+.search-highlight {
+    background: rgba(255, 235, 59, 0.5);
+    color: var(--reading-text);
+    padding: 0.15rem 0.25rem;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 235, 59, 0.3);
+}
+
+/* Active/Current match highlight */
+.search-highlight.active {
+    background: rgba(255, 193, 7, 0.8);
+    color: var(--reading-text);
+    font-weight: 600;
+    border: 2px solid rgba(255, 152, 0, 0.8);
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+    padding: 0.15rem 0.3rem;
+}
+
+/* Pulse animation for active match */
+@keyframes highlightPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.3);
+    }
+}
+
+.search-highlight.active {
+    animation: highlightPulse 1.5s ease-in-out infinite;
+}
+
+/* Pulse animation for searching */
+.search-wrapper.searching {
+    animation: searchPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes searchPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 3px rgba(91, 124, 153, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 0 3px rgba(91, 124, 153, 0.2);
+    }
+}
+
+/* Dark mode adjustments */
+body.dark-mode .search-wrapper {
+    background: var(--sidebar-bg);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-wrapper:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(127, 169, 155, 0.2);
+}
+
+body.dark-mode .search-input {
+    color: var(--sidebar-text);
+}
+
+body.dark-mode .search-clear:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-navigation {
+    background: rgba(127, 169, 155, 0.1);
+}
+
+body.dark-mode .search-nav-btn {
+    background: var(--sidebar-bg);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--sidebar-text);
+}
+
+body.dark-mode .search-nav-btn:hover:not(:disabled) {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+body.dark-mode .search-highlight {
+    background: rgba(127, 169, 155, 0.4);
+    border-color: rgba(127, 169, 155, 0.3);
+}
+
+body.dark-mode .search-highlight.active {
+    background: rgba(127, 169, 155, 0.7);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(127, 169, 155, 0.3);
+}
+
+body.dark-mode #currentMatchNumber {
+    color: var(--accent-color);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .search-container {
+        max-width: none;
+        margin: 0.5rem 0;
+        order: 3;
+        width: 100%;
+    }
+    
+    .nav-controls {
+        flex-wrap: wrap;
+    }
+    
+    .search-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .search-input::placeholder {
+        font-size: 0.85rem;
+    }
+    
+    .search-navigation {
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .search-results-info {
+        font-size: 0.8rem;
+    }
+    
+    .search-nav-btn {
+        padding: 0.35rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input::placeholder {
+        content: "Search...";
+    }
+}
         /* Content Area */
         .content-wrapper {
             max-width: 800px;
@@ -717,8 +1010,42 @@
                         <i class="fas fa-book-open"></i>
                         <span>101 Linux Commands</span>
                     </div>
+                <!-- Search Box with Navigation -->
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            id="commandSearch" 
+                            class="search-input" 
+                            placeholder="Search "
+                            autocomplete="off"
+                            spellcheck="false"
+                            aria-label="Search Linux commands"
+                        />
+                        <button class="search-clear" id="searchClear" aria-label="Clear search" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Search Navigation Controls -->
+                    <div class="search-navigation" id="searchNavigation" style="display: none;">
+                        <div class="search-results-info">
+                            <span id="currentMatchNumber">0</span>
+                            <span class="search-separator">/</span>
+                            <span id="totalMatches">0</span>
+                        </div>
+                        <div class="search-nav-buttons">
+                            <button class="search-nav-btn" id="prevMatch" aria-label="Previous match" title="Previous (Shift+Enter)">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                            <button class="search-nav-btn" id="nextMatch" aria-label="Next match" title="Next (Enter)">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                
+                </div>
                 <div class="reading-controls">
                     <button class="font-size-btn" onclick="changeFontSize('small')" aria-label="Small font">A-</button>
                     <button class="font-size-btn active" onclick="changeFontSize('medium')" aria-label="Medium font">A</button>
@@ -21679,6 +22006,18 @@ DNS: 8.8.8.8<br />
         let sidebarOpen = window.innerWidth > 1024;
         let currentFontSize = 'medium';
 
+        // Search functionality - Add to setupEventListeners function
+        const searchInput = document.getElementById('commandSearch');
+        const searchClear = document.getElementById('searchClear');
+        const prevMatchBtn = document.getElementById('prevMatch');
+        const nextMatchBtn = document.getElementById('nextMatch');
+        // Global variables for search state
+        let searchMatches = [];
+        let currentMatchIndex = -1;
+        let searchQuery = '';
+        let originalContent = null; // Store original content
+
+        
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initializeApp();
@@ -21690,6 +22029,7 @@ DNS: 8.8.8.8<br />
             loadPreferences();
             setupEventListeners();
             updateActiveNavigation();
+            initializeSearch(); 
             
             if (window.innerWidth > 1024) {
                 toggleSidebar();
@@ -21930,6 +22270,83 @@ DNS: 8.8.8.8<br />
                     }
                 }, 250);
             });
+
+
+
+if (searchInput) {
+    let searchTimeout;
+    searchInput.addEventListener('input', function(e) {
+        const query = e.target.value;
+        
+        // Show/hide clear button
+        if (query.length > 0) {
+            searchClear.style.display = 'flex';
+            searchClear.classList.add('visible');
+        } else {
+            searchClear.style.display = 'none';
+            searchClear.classList.remove('visible');
+        }
+        
+        // Debounce search
+        clearTimeout(searchTimeout);
+        
+        if (query.length === 0) {
+            clearSearch();
+            return;
+        }
+        
+        const searchWrapper = document.querySelector('.search-wrapper');
+        if (searchWrapper) {
+            searchWrapper.classList.add('searching');
+        }
+        
+        searchTimeout = setTimeout(() => {
+            performSearch(query);
+            if (searchWrapper) {
+                searchWrapper.classList.remove('searching');
+            }
+        }, 300);
+    });
+    
+    if (searchClear) {
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            searchClear.classList.remove('visible');
+            clearSearch();
+            searchInput.focus();
+        });
+    }
+    
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (e.shiftKey) {
+                prevMatch();
+            } else {
+                nextMatch();
+            }
+        } else if (e.key === 'Escape') {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            searchClear.classList.remove('visible');
+            clearSearch();
+            searchInput.blur();
+        }
+    });
+}
+
+if (prevMatchBtn) {
+    prevMatchBtn.addEventListener('click', function() {
+        prevMatch();
+    });
+}
+
+if (nextMatchBtn) {
+    nextMatchBtn.addEventListener('click', function() {
+        nextMatch();
+    });
+}
         }
 
         // Keyboard shortcuts
@@ -21949,7 +22366,518 @@ DNS: 8.8.8.8<br />
                     toggleDarkMode();
                 }
             }
+            // Ctrl/Cmd + K to focus search
+            if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    const searchInput = document.getElementById('commandSearch');
+                    if (searchInput) {
+                        searchInput.focus();
+                        searchInput.select();
+                    }
+                }
+            }
+
+            // Ctrl/Cmd + / to focus search (alternative)
+            if (e.key === '/' && (e.ctrlKey || e.metaKey)) {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    const searchInput = document.getElementById('commandSearch');
+                    if (searchInput) {
+                        searchInput.focus();
+                        searchInput.select();
+                    }
+                }
+            }
         });
+
+ function initializeSearch() {
+    const content = document.getElementById('content');
+    if (content && !originalContent) {
+        originalContent = content.cloneNode(true);
+    }
+}
+
+// Fuzzy Search Algorithm
+function fuzzyMatch(pattern, str) {
+    pattern = pattern.toLowerCase();
+    str = str.toLowerCase();
+    
+    // Perfect substring match gets highest score
+    if (str.includes(pattern)) {
+        const index = str.indexOf(pattern);
+        const positionBonus = index === 0 ? 50 : 0;
+        return {
+            matched: true,
+            score: 100 + positionBonus,
+            type: 'exact'
+        };
+    }
+    
+    let patternIdx = 0;
+    let strIdx = 0;
+    let score = 0;
+    let consecutiveMatches = 0;
+    
+    while (patternIdx < pattern.length && strIdx < str.length) {
+        const patternChar = pattern[patternIdx];
+        const strChar = str[strIdx];
+        
+        if (patternChar === strChar) {
+            consecutiveMatches++;
+            score += 10 + (consecutiveMatches * 5);
+            
+            if (strIdx === 0 || str[strIdx - 1] === ' ' || str[strIdx - 1] === '-') {
+                score += 15;
+            }
+            
+            patternIdx++;
+        } else {
+            consecutiveMatches = 0;
+        }
+        
+        strIdx++;
+    }
+    
+    const matched = patternIdx === pattern.length;
+    
+    if (!matched) {
+        return { matched: false, score: 0, type: 'none' };
+    }
+    
+    score -= (str.length - pattern.length) * 0.5;
+    
+    return {
+        matched: true,
+        score: Math.max(0, score),
+        type: 'fuzzy'
+    };
+}
+
+// Get clean text content (without highlight spans)
+function getCleanText(element) {
+    // Clone the element
+    const clone = element.cloneNode(true);
+    
+    // Remove all highlight spans but keep their text
+    const highlights = clone.querySelectorAll('.search-highlight');
+    highlights.forEach(highlight => {
+        const text = document.createTextNode(highlight.textContent);
+        highlight.parentNode.replaceChild(text, highlight);
+    });
+    
+    // Normalize to merge text nodes
+    clone.normalize();
+    
+    return clone.textContent;
+}
+
+// Get all text nodes, ensuring we work with clean content
+function getAllTextNodes(element) {
+    const textNodes = [];
+    
+    // Create a clean walker that skips highlight spans
+    function walkNode(node) {
+        // Skip highlight spans - get their text content directly
+        if (node.nodeType === Node.ELEMENT_NODE && 
+            node.classList && 
+            node.classList.contains('search-highlight')) {
+            return;
+        }
+        
+        // Skip script and style tags
+        if (node.nodeType === Node.ELEMENT_NODE &&
+            (node.tagName === 'SCRIPT' || node.tagName === 'STYLE')) {
+            return;
+        }
+        
+        // If it's a text node with content, add it
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+            textNodes.push(node);
+        }
+        
+        // Recurse through children
+        const children = node.childNodes;
+        for (let i = 0; i < children.length; i++) {
+            walkNode(children[i]);
+        }
+    }
+    
+    walkNode(element);
+    return textNodes;
+}
+
+// Find all occurrences of query in text (case-insensitive)
+function findOccurrences(text, query) {
+    const occurrences = [];
+    const lowerText = text.toLowerCase();
+    const lowerQuery = query.toLowerCase();
+    
+    let index = lowerText.indexOf(lowerQuery);
+    
+    while (index !== -1) {
+        occurrences.push({
+            start: index,
+            end: index + query.length
+        });
+        index = lowerText.indexOf(lowerQuery, index + 1);
+    }
+    
+    return occurrences;
+}
+
+// Find all matches in the document
+function findAllMatches(query) {
+    if (!query || query.trim() === '') {
+        return [];
+    }
+    
+    // CRITICAL: Clear highlights first to ensure clean text
+    clearAllHighlights();
+    
+    const content = document.getElementById('content');
+    const textNodes = getAllTextNodes(content);
+    const matches = [];
+    
+    textNodes.forEach(node => {
+        const text = node.textContent;
+        const match = fuzzyMatch(query, text);
+        
+        if (match.matched && match.score > 0) {
+            // Find all occurrences in this text node
+            const occurrences = findOccurrences(text, query);
+            
+            occurrences.forEach(occurrence => {
+                matches.push({
+                    node: node,
+                    text: text,
+                    start: occurrence.start,
+                    end: occurrence.end,
+                    score: match.score,
+                    type: match.type
+                });
+            });
+        }
+    });
+    
+    // Sort by score (best matches first)
+    matches.sort((a, b) => b.score - a.score);
+    
+    return matches;
+}
+
+// Highlight matches in a single text node
+function highlightTextNode(textNode, matches, query) {
+    const text = textNode.textContent;
+    const parent = textNode.parentElement;
+    
+    // Skip if parent is a script, style, or highlight
+    if (!parent || 
+        parent.tagName === 'SCRIPT' || 
+        parent.tagName === 'STYLE' ||
+        parent.classList.contains('search-highlight')) {
+        return;
+    }
+    
+    // Sort matches by start position
+    matches.sort((a, b) => a.start - b.start);
+    
+    // Create document fragment
+    const fragment = document.createDocumentFragment();
+    let lastIndex = 0;
+    
+    matches.forEach(match => {
+        // Add text before match
+        if (match.start > lastIndex) {
+            fragment.appendChild(
+                document.createTextNode(text.substring(lastIndex, match.start))
+            );
+        }
+        
+        // Add highlighted match
+        const span = document.createElement('span');
+        span.className = 'search-highlight';
+        span.textContent = text.substring(match.start, match.end);
+        span.setAttribute('data-match-index', match.globalIndex);
+        fragment.appendChild(span);
+        
+        lastIndex = match.end;
+    });
+    
+    // Add remaining text
+    if (lastIndex < text.length) {
+        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+    }
+    
+    // Replace text node with fragment
+    try {
+        parent.replaceChild(fragment, textNode);
+    } catch (e) {
+        console.error('Error replacing node:', e);
+    }
+}
+
+// Highlight all matches
+function highlightAllMatches(matches, query) {
+    if (!matches || matches.length === 0) {
+        showNoResults(query);
+        return;
+    }
+    
+    // Hide no results message
+    hideNoResults();
+    
+    // Group matches by parent node
+    const matchesByNode = new Map();
+    
+    matches.forEach((match, index) => {
+        const key = match.node;
+        if (!matchesByNode.has(key)) {
+            matchesByNode.set(key, []);
+        }
+        matchesByNode.get(key).push({ ...match, globalIndex: index });
+    });
+    
+    // Apply highlights to each text node
+    matchesByNode.forEach((nodeMatches, textNode) => {
+        // Verify the text node still exists and hasn't been modified
+        if (textNode && textNode.parentElement) {
+            highlightTextNode(textNode, nodeMatches, query);
+        }
+    });
+    
+    // Get all highlight elements after applying
+    searchMatches = Array.from(document.querySelectorAll('.search-highlight'));
+    
+    // Update UI
+    updateSearchNavigation();
+    
+    // Navigate to first match
+    if (searchMatches.length > 0) {
+        navigateToMatch(0);
+    }
+}
+
+// Clear all search highlights - IMPROVED VERSION
+function clearAllHighlights() {
+    const highlights = document.querySelectorAll('.search-highlight');
+    
+    if (highlights.length === 0) {
+        return; // Nothing to clear
+    }
+    
+    // Process all highlights
+    highlights.forEach(highlight => {
+        try {
+            const text = highlight.textContent;
+            const parent = highlight.parentNode;
+            
+            if (parent) {
+                const textNode = document.createTextNode(text);
+                parent.replaceChild(textNode, highlight);
+            }
+        } catch (e) {
+            console.error('Error clearing highlight:', e);
+        }
+    });
+    
+    // Normalize all parents to merge adjacent text nodes
+    const content = document.getElementById('content');
+    if (content) {
+        normalizeElement(content);
+    }
+    
+    searchMatches = [];
+    currentMatchIndex = -1;
+}
+
+// Normalize an element and all its children
+function normalizeElement(element) {
+    try {
+        // Use the built-in normalize method
+        element.normalize();
+        
+        // Also normalize all child elements
+        const children = element.querySelectorAll('*');
+        children.forEach(child => {
+            try {
+                child.normalize();
+            } catch (e) {
+                // Ignore errors on individual elements
+            }
+        });
+    } catch (e) {
+        console.error('Error normalizing element:', e);
+    }
+}
+
+// Navigate to a specific match
+function navigateToMatch(index) {
+    if (searchMatches.length === 0) return;
+    
+    // Wrap around
+    if (index < 0) {
+        index = searchMatches.length - 1;
+    } else if (index >= searchMatches.length) {
+        index = 0;
+    }
+    
+    // Remove active class from previous match
+    if (currentMatchIndex >= 0 && searchMatches[currentMatchIndex]) {
+        searchMatches[currentMatchIndex].classList.remove('active');
+    }
+    
+    // Set new current match
+    currentMatchIndex = index;
+    const currentMatch = searchMatches[currentMatchIndex];
+    
+    if (currentMatch) {
+        // Add active class
+        currentMatch.classList.add('active');
+        
+        // Scroll to match
+        const rect = currentMatch.getBoundingClientRect();
+        const offset = window.innerHeight / 3;
+        
+        window.scrollTo({
+            top: window.pageYOffset + rect.top - offset,
+            behavior: 'smooth'
+        });
+        
+        // Update navigation UI
+        updateSearchNavigation();
+    }
+}
+
+// Update search navigation UI
+function updateSearchNavigation() {
+    const navigation = document.getElementById('searchNavigation');
+    const currentMatchNumber = document.getElementById('currentMatchNumber');
+    const totalMatches = document.getElementById('totalMatches');
+    const prevBtn = document.getElementById('prevMatch');
+    const nextBtn = document.getElementById('nextMatch');
+    
+    if (!navigation) return;
+    
+    if (searchMatches.length === 0) {
+        navigation.style.display = 'none';
+        return;
+    }
+    
+    navigation.style.display = 'flex';
+    
+    // Update numbers
+    currentMatchNumber.textContent = currentMatchIndex + 1;
+    totalMatches.textContent = searchMatches.length;
+    
+    // Update button states
+    if (searchMatches.length <= 1) {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+    } else {
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+    }
+}
+
+// Show no results message
+function showNoResults(query) {
+    const navigation = document.getElementById('searchNavigation');
+    if (navigation) {
+        navigation.style.display = 'none';
+    }
+    
+    let noResultsMsg = document.getElementById('searchNoResults');
+    
+    if (!noResultsMsg) {
+        noResultsMsg = document.createElement('div');
+        noResultsMsg.id = 'searchNoResults';
+        noResultsMsg.style.cssText = `
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            text-align: center;
+            color: var(--reading-text-muted);
+            font-size: 0.85rem;
+            background: rgba(201, 85, 85, 0.08);
+            border-radius: 6px;
+            border: 1px solid rgba(201, 85, 85, 0.2);
+        `;
+        
+        const searchContainer = document.querySelector('.search-container');
+        if (searchContainer) {
+            searchContainer.appendChild(noResultsMsg);
+        }
+    }
+    
+    noResultsMsg.innerHTML = `
+        <i class="fas fa-search" style="opacity: 0.5; margin-right: 0.5rem;"></i>
+        No matches found for "<strong>${escapeHtml(query)}</strong>"
+    `;
+    noResultsMsg.style.display = 'block';
+}
+
+// Hide no results message
+function hideNoResults() {
+    const noResultsMsg = document.getElementById('searchNoResults');
+    if (noResultsMsg) {
+        noResultsMsg.style.display = 'none';
+    }
+}
+
+// Escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Clear search completely
+function clearSearch() {
+    clearAllHighlights();
+    hideNoResults();
+    
+    const navigation = document.getElementById('searchNavigation');
+    if (navigation) {
+        navigation.style.display = 'none';
+    }
+    
+    const searchWrapper = document.querySelector('.search-wrapper');
+    if (searchWrapper) {
+        searchWrapper.classList.remove('searching');
+    }
+    
+    searchQuery = '';
+    searchMatches = [];
+    currentMatchIndex = -1;
+}
+
+// Navigate to next match
+function nextMatch() {
+    if (searchMatches.length > 0) {
+        navigateToMatch(currentMatchIndex + 1);
+    }
+}
+
+// Navigate to previous match
+function prevMatch() {
+    if (searchMatches.length > 0) {
+        navigateToMatch(currentMatchIndex - 1);
+    }
+}
+
+// Perform search - FIXED VERSION
+function performSearch(query) {
+    searchQuery = query.trim();
+    
+    if (searchQuery === '') {
+        clearSearch();
+        return;
+    }
+    
+    // CRITICAL: This clears highlights and then finds matches in clean text
+    const matches = findAllMatches(searchQuery);
+    highlightAllMatches(matches, searchQuery);
+}
     </script>
 </body>
 </html>
