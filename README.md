@@ -42,6 +42,10 @@ This eBook is now available in multiple formats to suit different reading prefer
 
 Visit our [Releases page](https://github.com/bobbyiliev/101-linux-commands/releases) to download the latest versions or browse previous releases.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=bobbyiliev/101-linux-commands&type=date&legend=top-left)](https://www.star-history.com/#bobbyiliev/101-linux-commands&type=date&legend=top-left)
+
 ---
 
 # Content <!-- omit in toc -->
