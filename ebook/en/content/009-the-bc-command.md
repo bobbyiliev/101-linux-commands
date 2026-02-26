@@ -11,16 +11,16 @@ Input : $ echo "11+5" | bc
 Output : 16
 ```
 2 . Increment:
-- var –++ : Post increment operator, the result of the variable is used first and then the variable is incremented.
-- – ++var : Pre increment operator, the variable is increased first and then the result of the variable is stored.
+- var++ : Post increment operator, the result of the variable is used first and then the variable is incremented.
+- ++var : Pre increment operator, the variable is increased first and then the result of the variable is stored.
 
 ```
 Input: $ echo "var=3;++var" | bc
 Output: 4
 ```
 3 . Decrement:
-- var – – : Post decrement operator, the result of the variable is used first and then the variable is decremented.
-- – – var : Pre decrement operator, the variable is decreased first and then the result of the variable is stored.
+- var–– : Post decrement operator, the result of the variable is used first and then the variable is decremented.
+- ––var : Pre decrement operator, the variable is decreased first and then the result of the variable is stored.
 
 ```
 Input: $ echo "var=3;--var" | bc

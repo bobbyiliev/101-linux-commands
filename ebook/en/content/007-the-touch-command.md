@@ -18,10 +18,7 @@ touch [OPTION]... FILE...
 |`-m`|<center>-</center>|Change only the modification time.|
 |`-r=FILE`|`--reference=FILE`|Use this file's times instead of the current time.|
 |`-t STAMP`|<center>-</center>|Use the numeric time  *STAMP*  instead of the current time. The format of *STAMP*  is [[**CC**]**YY**]**MMDDhhmm**[**.ss**].|
-|<center>-</center>|`--time=WORD`|An alternate way to specify which type of time is set (e.g. *access*, *modification*, or *change*). This is equivalent to specifying `-a` or `-m`.
-
-- WORD is `access`, `atime`, or `use`: equivalent to `-a`.
-- WORD is `modify` or `mtime`: equivalent to `-m`.
+|<center>-</center>|`--time=WORD`|An alternate way to specify which type of time is set (e.g. *access*, *modification*, or *change*). This is equivalent to specifying `-a` or `-m`- WORD is `access`, `atime` : equivalent to `-a` or WORD is `modify` or `mtime` : equivalent to `-m`.
 
 An alternate way to specify what type of time to set (as with  **-a**  and  **-m**).|
 |<center>-</center>|`--help`|Display a help message, and exit.|

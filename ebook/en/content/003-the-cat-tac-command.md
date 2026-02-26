@@ -85,7 +85,6 @@ cat [OPTION] [FILE]...
 |`-e`|<center>-</center>| equivalent to -vE|
 |`-T`|<center>-</center>|Display tab separated lines in file opened with ```cat``` command.|
 |`-E`|<center>-</center>|To show $ at the end of each file.|
-|`-E`|<center>-</center>|Display file with line numbers.|
 |`-n`| `--number`|number all output lines|
 |`-s`| `--squeeze-blank`|suppress repeated empty output lines|
 |`-u`|<center>-</center>|(ignored)|
