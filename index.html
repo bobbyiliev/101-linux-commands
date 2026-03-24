@@ -866,7 +866,7 @@ It normally lists the files and directories in ascending alphabetical order.</p>
 <tr>
 <td align="left"><code>-lh</code></td>
 <td align="left"><center>-</center></td>
-<td align="left">list long format files and directories with readable size</td>
+<td align="left">List long format files and directories with readable size</td>
 </tr>
 <tr>
 <td align="left"><code>-A</code></td>
@@ -1447,11 +1447,6 @@ cat filename | less
 <td align="left">To show $ at the end of each file.</td>
 </tr>
 <tr>
-<td align="left"><code>-E</code></td>
-<td align="left"><center>-</center></td>
-<td align="left">Display file with line numbers.</td>
-</tr>
-<tr>
 <td align="left"><code>-n</code></td>
 <td align="left"><code>--number</code></td>
 <td align="left">number all output lines</td>
@@ -1855,14 +1850,10 @@ You can also check this by printing out the <code>$PWD</code> variable:</p>
 <tr>
 <td align="left"><center>-</center></td>
 <td align="left"><code>--time=WORD</code></td>
-<td align="left">An alternate way to specify which type of time is set (e.g. <em>access</em>, <em>modification</em>, or <em>change</em>). This is equivalent to specifying <code>-a</code> or <code>-m</code>.</td>
+<td align="left">An alternate way to specify which type of time is set (e.g. <em>access</em>, <em>modification</em>, or <em>change</em>). This is equivalent to specifying <code>-a</code> or <code>-m</code>- WORD is <code>access</code>, <code>atime</code> : equivalent to <code>-a</code> or WORD is <code>modify</code> or <code>mtime</code> : equivalent to <code>-m</code>.</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>WORD is <code>access</code>, <code>atime</code>, or <code>use</code>: equivalent to <code>-a</code>.</li>
-<li>WORD is <code>modify</code> or <code>mtime</code>: equivalent to <code>-m</code>.</li>
-</ul>
 <p>An alternate way to specify what type of time to set (as with  <strong>-a</strong>  and  <strong>-m</strong>).|
 |<center>-</center>|<code>--help</code>|Display a help message, and exit.|
 |<center>-</center>|<code>--version</code>|Display version information, and exit.|</p>
@@ -1995,16 +1986,16 @@ Output : <span class="hljs-number">16</span>
 </code></pre>
 <p>2 . Increment:</p>
 <ul>
-<li>var –++ : Post increment operator, the result of the variable is used first and then the variable is incremented.</li>
-<li>– ++var : Pre increment operator, the variable is increased first and then the result of the variable is stored.</li>
+<li>var++ : Post increment operator, the result of the variable is used first and then the variable is incremented.</li>
+<li>++var : Pre increment operator, the variable is increased first and then the result of the variable is stored.</li>
 </ul>
 <pre><code class="language-php hljs php" data-lang="php">Input: $ <span class="hljs-keyword">echo</span> <span class="hljs-string">"var=3;++var"</span> | bc
 Output: <span class="hljs-number">4</span>
 </code></pre>
 <p>3 . Decrement:</p>
 <ul>
-<li>var – – : Post decrement operator, the result of the variable is used first and then the variable is decremented.</li>
-<li>– – var : Pre decrement operator, the variable is decreased first and then the result of the variable is stored.</li>
+<li>var–– : Post decrement operator, the result of the variable is used first and then the variable is decremented.</li>
+<li>––var : Pre decrement operator, the variable is decreased first and then the result of the variable is stored.</li>
 </ul>
 <pre><code class="language-php hljs php" data-lang="php">Input: $ <span class="hljs-keyword">echo</span> <span class="hljs-string">"var=3;--var"</span> | bc
 Output: <span class="hljs-number">2</span>
@@ -5114,7 +5105,7 @@ Print version information on standard output and exit successfully.</p>
 </ol>
 <pre><code class="language- hljs " data-lang="">ifconfig eth0:0 down
 </code></pre>
-<p>Remember that for every scope  (i.e.  same  net  with  address/netmask  combination)  all aiases are deleted, if you delete the first alias.</p>
+<p>Remember that for every scope  (i.e.  same  net  with  address/netmask  combination)  all aliases are deleted, if you delete the first alias.</p>
 <h3>Help Command</h3>
 <p>Run below command to view the complete guide to <code>ifconfig</code> command.</p>
 <pre><code class="language- hljs " data-lang="">man ifconfig
