@@ -93,7 +93,7 @@ Please note that the alias network address is in the same subnet mask of the net
 ```
 ifconfig eth0:0 down
 ```
-Remember that for every scope  (i.e.  same  net  with  address/netmask  combination)  all aiases are deleted, if you delete the first alias.
+Remember that for every scope  (i.e.  same  net  with  address/netmask  combination)  all aliases are deleted, if you delete the first alias.
 ### Help Command
 Run below command to view the complete guide to `ifconfig` command.
 ```
